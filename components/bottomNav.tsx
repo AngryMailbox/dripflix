@@ -6,12 +6,15 @@ import { withTheme } from "react-native-paper";
 import { greenA100 } from "react-native-paper/lib/typescript/styles/themes/v2/colors";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { Provider as PaperProvider } from "react-native-paper";
+import Movies from "./movies";
 
 const MoviesRoute = () => <Text>Movies</Text>;
 
 const SeriesRoute = () => <Text>Series</Text>;
 
 const StarredRoute = () => <Text>Starred</Text>;
+
+let theme = {};
 
 const BottomNav = () => {
   const [index, setIndex] = React.useState(0);
@@ -37,7 +40,7 @@ const BottomNav = () => {
 
   //key : route
   const renderScene = BottomNavigation.SceneMap({
-    Movies: MoviesRoute,
+    Movies: Movies,
     Series: SeriesRoute,
     Starred: StarredRoute,
   });
@@ -52,12 +55,10 @@ const BottomNav = () => {
         onIndexChange={setIndex}
         renderScene={renderScene}
         shifting={true}
-        activeColor={"black"}
-        inactiveColor={"white"}
         keyboardHidesNavigationBar={true}
       />
     </PaperProvider>
   );
 };
 
-export default withTheme(BottomNav);
+export default BottomNav;

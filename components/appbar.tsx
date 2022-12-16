@@ -11,11 +11,9 @@ const Navbar = () => {
         dark={true}
         style={[
           {
-            height: 100,
             backgroundColor: "#202020",
             justifyContent: "center",
             alignItems: "center",
-            paddingTop: 30,
           },
         ]}
       >
@@ -28,6 +26,7 @@ const Navbar = () => {
         <Appbar.Content
           title="DRIPFLIX"
           titleStyle={[{ color: "white", fontWeight: "bold", fontSize: 30 }]}
+          onPress={() => console.log("Pressed title")}
         />
         <Appbar.Action
           icon="magnify"
