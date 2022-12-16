@@ -7,14 +7,13 @@ import { Provider as PaperProvider } from "react-native-paper";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import React from "react";
 import { Item } from "react-native-paper/lib/typescript/components/Drawer/Drawer";
+import Wrapper from "./components/mainWrapper";
 
 export default function App() {
   return (
     <>
-      <PaperProvider>
-        <Navbar />
-        <BottomNav />
-      </PaperProvider>
+      <Navbar />
+      <BottomNav />
     </>
   );
 }

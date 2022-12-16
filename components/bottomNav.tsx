@@ -8,7 +8,7 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 import { Provider as PaperProvider } from "react-native-paper";
 import Movies from "./movies";
 
-const MoviesRoute = () => <Text>Movies</Text>;
+const MoviesRoute = Movies;
 
 const SeriesRoute = () => <Text>Series</Text>;
 
@@ -40,12 +40,11 @@ const BottomNav = () => {
 
   //key : route
   const renderScene = BottomNavigation.SceneMap({
-    Movies: Movies,
+    Movies: MoviesRoute,
     Series: SeriesRoute,
     Starred: StarredRoute,
   });
 
-  const theme = useTheme();
   return (
     <PaperProvider>
       <BottomNavigation
@@ -54,7 +53,7 @@ const BottomNav = () => {
         theme={{ dark: true }}
         onIndexChange={setIndex}
         renderScene={renderScene}
-        shifting={true}
+        shifting={false}
         keyboardHidesNavigationBar={true}
       />
     </PaperProvider>

@@ -27,14 +27,16 @@ const Movies = () => {
           <Card
             onPress={() => {
               console.log("Pressed" + movie.title);
-            }} // {props.navigation.navigate("MovieCard")}
-            mode="outlined"
+            }}
+            style={styles.item}
+            mode="contained"
+            key={movie.id}
           >
             <Card.Content>
-              <Title>{movie.title}</Title>
+              <Card.Cover source={{ uri: movie.img }} />
+              <Title style={styles.title}>{movie.title}</Title>
               {/* <Paragraph>Card content</Paragraph> */}
             </Card.Content>
-            <Card.Cover source={{ uri: movie.img }} />
           </Card>
         ))}
       </View>
@@ -55,6 +57,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     width: "100%",
-    height: "10%",
+    justifyContent: "space-evenly",
+  },
+  item: {
+    width: "30%",
+    backgroundColor: "none",
+  },
+  title: {
+    fontSize: 12,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
