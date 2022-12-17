@@ -32,10 +32,9 @@ const Movies = () => {
             mode="contained"
             key={movie.id}
           >
-            <Card.Content>
+            <Card.Content style={styles.contentWrapper}>
               <Card.Cover source={{ uri: movie.img }} />
               <Title style={styles.title}>{movie.title}</Title>
-              {/* <Paragraph>Card content</Paragraph> */}
             </Card.Content>
           </Card>
         ))}
@@ -51,6 +50,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     flexWrap: "wrap",
     width: "100%",
+    backgroundColor: "#202020",
   },
   items: {
     flex: 1,
@@ -58,14 +58,22 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     width: "100%",
     justifyContent: "space-evenly",
+    height: 30,
   },
   item: {
-    width: "30%",
+    width: "33%",
     backgroundColor: "none",
   },
+
+  contentWrapper: {
+    height: "50%",
+    paddingBottom: 0,
+  },
+
   title: {
     fontSize: 12,
     fontWeight: "bold",
     textAlign: "center",
+    color: "white",
   },
 });
