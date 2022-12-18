@@ -39,7 +39,7 @@ export async function getContent(type, p = "1") {
     switch (type) {
         case "trending":
             data = await trending();
-            results = rewriteId(data.results);
+            results = await rewriteId(data.results);
             console.log(results);
             return results;
         case "popular":
@@ -54,7 +54,7 @@ async function rewriteId(results) {
         results[i]["movieId"] = results[i]["id"];
         results[i]["id"] = i;
 
-        results[i]["img"] = await image(results[i]["poster_path"]);
+        results[i]["img"] = "http://image.tmdb.org/t/p/w500" + results[i]["poster_path"];
     }
     return results;
 }
