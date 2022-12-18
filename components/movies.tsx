@@ -11,6 +11,8 @@ import {
 import movies from "../data/moviedata.js";
 import { StyleSheet } from "react-native";
 
+import { fetch } from "../app/core";
+
 const props = {
   navigation: {
     navigate: (pageName: string) => {
@@ -20,6 +22,11 @@ const props = {
 };
 
 const Movies = () => {
+
+  //let [movies, setFunc] = fetch();
+
+  //console.log(movies);
+
   return (
     <View style={styles.container}>
       <View style={styles.items}>
