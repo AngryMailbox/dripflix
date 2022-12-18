@@ -7,7 +7,7 @@ import searchReducer from "./slices/searchSlice"
 import contentReducer from './slices/contentSlice';
 import contentTypeReducer from './slices/contentTypeSlice'
 
-const { trending, popular, search, images, get } = require("./api");
+const { trending, popular, search, image, get } = require("./api");
 
 // //
 // To remove
@@ -30,6 +30,7 @@ export const searchMovie = async function (query, p = "1") {
     return data.results;
 };
 
+
 export async function getContent(type, p = "1") {
 
     let data = {};
@@ -48,10 +49,12 @@ export async function getContent(type, p = "1") {
     };
 };
 
-function rewriteId(results) {
+async function rewriteId(results) {
     for (let i = 0; i < results.length; i++) {
         results[i]["movieId"] = results[i]["id"];
         results[i]["id"] = i;
+
+        results[i]["img"] = await image(results[i]["poster_path"]);
     }
     return results;
 }

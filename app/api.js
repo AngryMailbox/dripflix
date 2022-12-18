@@ -8,6 +8,10 @@ const i = axios.create({
     baseURL: "https://api.themoviedb.org/3/"
 });
 
+const img = axios.create({
+    baseURL: "http://image.tmdb.org/t/p/w500"
+})
+
 // const req = function (link, params) {
 //     i.get(link, params).then(
 //         function (response) {
@@ -52,13 +56,13 @@ export async function get(id) {
 
 };
 
-export async function images(id) {
-    let params = {
-        api_key: key,
-        language: "en-US"
-    };
+export async function image(id) {
+    // let params = {
+    //     api_key: key,
+    //     language: "en-US"
+    // };
     try {
-        let resp = await i.get("movie/" + id + "/images", { params });
+        let resp = await img.get(id);
         return resp;
     } catch (error) {
         console.error(error);

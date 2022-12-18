@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { Route, ScrollView, View } from "react-native";
 import {
   Avatar,
@@ -8,10 +8,21 @@ import {
   Paragraph,
   List,
 } from "react-native-paper";
-import movies from "../data/moviedata.js";
+//import movies from "../data/moviedata.js";
 import { StyleSheet } from "react-native";
 
-import { fetch } from "../app/core";
+// import { useSelector, useDispatch } from 'react-redux';
+
+import { selectContent, fetch, getContent } from "../app/core"
+// import { change } from "../app/slices/contentSlice"
+
+// function rangeSelector({ range = 6 }) {
+//   const selectRange = React.useMemo(selectContent, []);
+
+//   const itemsByRange = useSelector(state => selectRange(state, range))
+
+//   return itemsByRange;
+// }
 
 const props = {
   navigation: {
@@ -23,9 +34,18 @@ const props = {
 
 const Movies = () => {
 
-  //let [movies, setFunc] = fetch();
+  const [movies, setMovies] = useState([]);
 
-  //console.log(movies);
+  useEffect(() => {
+    getMovies();
+  }, []);
+
+  async function getMovies() {
+    let data = await getContent("trending");
+    setMovies(data);
+  }
+
+  console.log(movies);
 
   return (
     <View style={styles.container}>
