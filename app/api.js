@@ -4,9 +4,13 @@ import axios from "axios";
 
 const key = "11d80f4ac3cbcb689a66664b509c4cc5";
 
+// Create an axios object as api caller
 const i = axios.create({
     baseURL: "https://api.themoviedb.org/3/"
 });
+
+////
+// To remove
 
 // const img = axios.create({
 //     baseURL: "http://image.tmdb.org/t/p/w500"
@@ -23,6 +27,9 @@ const i = axios.create({
 //             console.log(error);
 //         });
 // };
+
+//
+////
 
 export async function search(type, q) {
     let params = {
@@ -68,15 +75,15 @@ export async function get(id) {
 
 // };
 
-export async function popular() {
+export async function popular(p) {
     let params = {
         api_key: key,
         language: "en-US",
-        page: "1"
+        page: p
     };
     try {
         let resp = await i.get("movie/popular", { params });
-        return resp;
+        return resp.data;
     } catch (error) {
         console.error(error);
     }
