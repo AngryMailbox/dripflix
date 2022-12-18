@@ -8,9 +8,9 @@ const i = axios.create({
     baseURL: "https://api.themoviedb.org/3/"
 });
 
-const img = axios.create({
-    baseURL: "http://image.tmdb.org/t/p/w500"
-})
+// const img = axios.create({
+//     baseURL: "http://image.tmdb.org/t/p/w500"
+// })
 
 // const req = function (link, params) {
 //     i.get(link, params).then(
@@ -56,20 +56,17 @@ export async function get(id) {
 
 };
 
-export async function image(id) {
-    // let params = {
-    //     api_key: key,
-    //     language: "en-US"
-    // };
-    try {
-        let resp = await img.get(id);
-        return resp;
-    } catch (error) {
-        console.error(error);
-    }
-    return resp;
+// export async function image(id) {
 
-};
+//     try {
+//         let resp = await img.get(id);
+//         return resp;
+//     } catch (error) {
+//         console.error(error);
+//     }
+//     return resp;
+
+// };
 
 export async function popular() {
     let params = {

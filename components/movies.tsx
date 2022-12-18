@@ -11,18 +11,7 @@ import {
 //import movies from "../data/moviedata.js";
 import { StyleSheet } from "react-native";
 
-// import { useSelector, useDispatch } from 'react-redux';
-
-import { selectContent, fetch, getContent } from "../app/core"
-// import { change } from "../app/slices/contentSlice"
-
-// function rangeSelector({ range = 6 }) {
-//   const selectRange = React.useMemo(selectContent, []);
-
-//   const itemsByRange = useSelector(state => selectRange(state, range))
-
-//   return itemsByRange;
-// }
+import { getContent } from "../app/core"
 
 const props = {
   navigation: {
