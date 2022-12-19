@@ -9,11 +9,19 @@ import React from "react";
 import { Item } from "react-native-paper/lib/typescript/components/Drawer/Drawer";
 import Wrapper from "./components/mainWrapper";
 
+
+import { NativeRouter, Route, Routes } from "react-router-native";
+
 export default function App() {
   return (
-    <>
-      <Navbar />
-      <BottomNav />
-    </>
+    <NativeRouter>
+      <>
+        <Navbar />
+        <Routes>
+          <Route path="/" component={Movies} />
+        </Routes>
+        <BottomNav />
+      </>
+    </NativeRouter>
   );
 }
