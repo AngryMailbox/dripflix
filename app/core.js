@@ -23,9 +23,9 @@ export const searchMovie = async function (query, p = "1") {
 
     // Function searchMovie() takes a query and optional parameter to find movies
 
-    let data = await search(query);
+    let data = await search(query, p);
     let results = await rewriteId(data.results);
-    return data.results;
+    return results;
 };
 
 

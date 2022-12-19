@@ -31,17 +31,16 @@ const i = axios.create({
 //
 ////
 
-export async function search(type, q) {
+export async function search(q, p) {
     let params = {
         api_key: key,
         query: q,
         language: "en-US",
-        page: "1",
+        page: p,
         include_adult: "false"
     };
     try {
         let resp = await i.get("search/movie", { params });
-        console.log(resp);
         return resp.data;
     } catch (error) {
         console.error(error);
