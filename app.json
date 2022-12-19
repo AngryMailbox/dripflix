@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "androidNavigationBar": {
-      "visible": "immersive"},
+      "visible": "contain"},
     "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/splash.png",

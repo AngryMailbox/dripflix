@@ -1,0 +1,70 @@
+import * as React from "react";
+import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+
+//Screens
+import Movies from "../components/movies";
+import Search from "../components/Search";
+import Test from "../components/test";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Navbar from "../components/navbar";
+//import MovieCard from "./movieCard[id]";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+
+const moviesName = "movies";
+const searchName = "search";
+const testName = "test";
+const navbarName = "navbar";
+
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+export default function MainContainer() {
+  return (
+    <>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName={moviesName}
+          screenOptions={({ route }) => ({
+            headerShown: true,
+            header: Navbar,
+          })}
+        >
+          <Stack.Screen name={navbarName} component={Navbar} />
+          <Stack.Screen name={testName} component={Test} />
+          <Stack.Screen name={moviesName} component={Movies} />
+          <Stack.Screen name={searchName} component={Search} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <NavigationContainer>
+        <Tab.Navigator
+          initialRouteName={moviesName}
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+              if (route.name === moviesName) {
+                iconName = focused ? "fa-solid fa-house" : "fa-thin fa-house";
+              } else if (route.name === searchName) {
+                iconName = focused
+                  ? "fa-brands fa-instagram"
+                  : "fa-solid fa-music";
+              }
+              return <FontAwesomeIcon icon={iconName} />;
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: "tomato",
+            inactiveTintColor: "gray",
+            labelStyle: { paddingBottom: 10, fontSize: 20, fontWeight: "bold" },
+            style: { padding: 10, height: 70, backgroundColor: "white" },
+          }}
+        >
+          <Tab.Screen name={moviesName} component={Movies} />
+          <Tab.Screen name={searchName} component={Search} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </>
+  );
+}
